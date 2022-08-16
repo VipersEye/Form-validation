@@ -108,16 +108,36 @@ class FormValidator {
 
         formObject['zip-code'].addEventListener('input', reportValidation);
 
+        const reportSuccess = () => {
+            let container = document.querySelector('.container');
+            container.classList.toggle('container_blur');
+
+            let successIcon = document.querySelector('.icon_success');
+            successIcon.classList.toggle('icon_success_active');
+
+            let submitBtn = document.querySelector('.form__btn');
+            submitBtn.disabled = true;
+
+            setTimeout( () => {
+                container.classList.toggle('container_blur');
+                successIcon.classList.toggle('icon_success_active');
+                submitBtn.disabled = false;
+            } , 3000 );
+        };
+
         const validateAllFields = (e) => {
+            e.preventDefault();
+
             let allInputs = formObject.form.querySelectorAll('input');
             for (let input of allInputs) {
                 let validity = checkInputValidity(input);
                 if (validity === false) {
-                    e.preventDefault();
                     input.reportValidity();
                     return;
                 }
             }
+
+            reportSuccess();
         };
 
         formObject.submitBtn.addEventListener('click', validateAllFields);

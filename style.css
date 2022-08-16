@@ -11,6 +11,8 @@
 }
 
 body {
+    position: relative;
+
     margin: 0;
 
     font-family: 'Roboto', sans-serif;
@@ -34,6 +36,12 @@ h1, h2, h3, h4, h5, h6 {
 
     background-color: transparent;
     background: linear-gradient(45deg, #150024 0%, #5b064b 20%, #79095c 35%, #6b03c3 55%, #2b9ae7 85%, #15d0db 100%);
+
+    transition: filter 0.2s linear;
+}
+
+.container_blur {
+    filter: blur(2px);
 }
 
 .form {
@@ -206,8 +214,36 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--btn-hover);
 }
 
-.form__btn:active {
+.form__btn:active:not(.form__btn:disabled) {
     box-shadow: none;
+}
+
+.icon_success {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+
+    padding: 2rem;
+    width: 8rem;
+    height: 8rem;
+
+    opacity: 0;
+
+    fill: #fff;
+    background-color: var(--input-valid);
+    border-radius: 50%;
+
+    transform: translate3d(-50%, -50%, 0) scale(0);
+
+    transition: opacity 0.3s linear, transform .25s ease-out;
+    transition-delay: 0.5s;
+}
+
+.icon_success_active {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
 }
 
 @media (max-width: 460px) {
