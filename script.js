@@ -67,13 +67,22 @@ class FormValidator {
             input.setCustomValidity(reportMessage);
         }
 
+        const checkPasswordValidity = (input) => {
+            if (input.validity.patternMismatch === true) {
+                input.setCustomValidity('Password must contain uppercase, lowercase letters and numeral');
+            }
+        };
+
         const checkInputValidity = (input) => {
             input.setCustomValidity('');
             input.removeEventListener('blur', reportValidation);
             if (input.id === 'input-zip-code') {
                 checkZipCodeValidity(input);
-            } else if (input.id === 'input-password-conf') {
-                checkPasswordEquality(input);
+            } else if (input.id === 'input-password-conf' || input.id === 'input-password') {
+                if (input.id === 'input-password-conf') {
+                    checkPasswordEquality(input);
+                }
+                checkPasswordValidity(input);
             }
             return input.checkValidity();
         };
