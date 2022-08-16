@@ -9,6 +9,14 @@
 </head>
 <body>
 
+    <svg style="display: none;">
+        <symbol id="plus" viewBox="142.8 72.8 414.39 414.39">
+            <g>
+                <path d="m350 72.801c-12.371 0-22.398 10.027-22.398 22.398v162.4h-162.4c-12.371 0-22.398 10.027-22.398 22.398s10.027 22.398 22.398 22.398h162.4v162.4c0 12.371 10.027 22.398 22.398 22.398s22.398-10.027 22.398-22.398v-162.4h162.4c12.371 0 22.398-10.027 22.398-22.398s-10.027-22.398-22.398-22.398h-162.4v-162.4c0-12.371-10.027-22.398-22.398-22.398z"/>
+            </g>
+        </symbol>
+    </svg>
+
     <div class="container">
         <form class="form" id="form" action="#" method="post" novalidate>
             <h1 class="form__title">Sign Up</h1>
@@ -47,7 +55,12 @@
                 <input class="form__input" type="password" name="password-confirm" id="input-password-conf" required placeholder="Confirm password" minlength="5" maxlength="30" pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?!.*\s).*$">
             </div>
 
-            <button class="form__btn" type="submit">confirm</button>
+            <button class="form__btn" type="submit">
+                <span class="form__btn-text">confirm</span>
+                <svg class="form__btn-icon">
+                    <use xlink:href="#plus"></use>
+                </svg>
+            </button>
         </form>
     </div>
 

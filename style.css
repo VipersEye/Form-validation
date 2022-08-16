@@ -37,9 +37,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form {
-    margin: 5rem;
     padding: 2rem 3rem;
-    width: 30%;
+    width: clamp(30rem, 30%, 40rem);
 
     display: flex;
     flex-direction: column;
@@ -194,10 +193,65 @@ h1, h2, h3, h4, h5, h6 {
     transition: box-shadow 0.2s linear , background 0.2s linear;
 }
 
+.form__btn-icon {
+    display: none;
+
+    width: 2rem;
+    height: 2rem;
+
+    fill: #fff;
+}
+
 .form__btn:hover {
     background: var(--btn-hover);
 }
 
 .form__btn:active {
     box-shadow: none;
+}
+
+@media (max-width: 460px) {
+    .form {
+        padding: 2rem 2rem;
+        width: 100%;
+    }
+
+    .form__title {
+        font-size: 2rem;
+    }
+
+    .form__subtitle {
+        font-size: 1.2rem;
+    }
+
+    .form__label {
+        font-size: 1rem;
+    }
+
+    .form__label::after {
+        font-size: 1rem;
+    }
+
+    .form__input {
+        font-size: 1.2rem;
+    }
+
+    .form__btn {
+        padding: 0;
+        width: 4rem;
+        height: 4rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form__btn-text {
+        display: none;
+    }
+
+    .form__btn-icon {
+        display: block;
+    }
+
 }
